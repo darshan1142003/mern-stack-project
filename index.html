@@ -47,7 +47,7 @@
 
 <body>
     <div class="box">
-        <input name="task-name" id="task-name" placeholder="New Task" />
+        <input name="task-name" id="task-name" onchange="addTask()" placeholder="New Task" />
         <button id="add-task"> Add Task</button>
     </div>
     <div class="box table-box">
@@ -57,20 +57,40 @@
                 <th>Done</th>
                 <th>Delete</th>
             </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
+            
         </table>
     </div>
     </div>
 </body>
 <script>
     let button = document.getElementById("add-task");
+    let input = document.getElementById("task-name")
+    let inputValue;
+    let tasks = [];
+    
+    let table = document.querySelector('tbody')
+
+    function addTask() {
+        inputValue = input.value;
+        tasks.push(inputValue)
+    }
+    
     button.addEventListener("click", function () {
-    localStorage.setItem("task", "task")
+        localStorage.setItem("allTasks", JSON.stringify(tasks))
+        localStorage.setItem("taskNumber", tasks.length)
+        table.insertAdjacentHTML("beforeend",`
+    <tr>
+                <td>${inputValue}</td>
+                <td><button>Complete</button></td>
+                <td><button>Delete</button></td>
+            </tr>
+    `)
     })
+    console.log(table)
+    
+
+    
+
 </script>
 
 </html>
