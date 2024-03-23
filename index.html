@@ -5,45 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task App</title>
+    <link rel="stylesheet" href="/styles/main.css" />
 </head>
-<style>
-    * {
-        margin: 0px;
-        padding: 0px;
-    }
-
-    table {
-        width: 400px;
-    }
-
-    table,
-    tr,
-    td,
-    th {
-        border: 2px solid #0e0d0d;
-    }
-
-    #add-task {
-        background-color: rgb(243, 10, 10);
-        color: aliceblue;
-        border-right: 50px;
-        height: 50px;
-        width: 100px;
-    }
-
-    .box {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        justify-self: center;
-        margin: 10px;
-        ;
-    }
-
-    .table-box {
-        height: 100vh;
-    }
-</style>
 
 <body>
     <div class="box">
@@ -57,50 +20,12 @@
                 <th>Done</th>
                 <th>Delete</th>
             </tr>
-            
+
         </table>
     </div>
     </div>
 </body>
-<script>
-    let button = document.getElementById("add-task");
-    let input = document.getElementById("task-name")
-    let inputValue;
-    let tasks = JSON.parse(localStorage.getItem("allTasks"))
-    let table = document.querySelector('tbody')
-  
-
-    function addTask() {
-        inputValue = input.value;
-        tasks.push(inputValue)
-    }
-    
-    button.addEventListener("click", function () {
-        localStorage.setItem("allTasks", JSON.stringify(tasks))
-        localStorage.setItem("taskNumber", tasks.length)
-        table.insertAdjacentHTML("beforeend",`
-    <tr>
-                <td>${inputValue}</td>
-                <td><button>Complete</button></td>
-                <td><button>Delete</button></td>
-            </tr>
-    `)
-    })
-    let storedData = JSON.parse(localStorage.getItem)("allTasks")
-    storedData.map((s)=> {
-        table.insertAdjacentHTML("beforeend",`
-    <tr>
-                <td>${s}</td>
-                <td><button>Complete</button></td>
-                <td><button>Delete</button></td>
-            </tr>
-    `)
-
-    })
-    console.log(table)
-    
-
-    
+<script src="/js/app.js">
 
 </script>
 
