@@ -66,9 +66,9 @@
     let button = document.getElementById("add-task");
     let input = document.getElementById("task-name")
     let inputValue;
-    let tasks = [];
-    
+    let tasks = JSON.parse(localStorage.getItem("allTasks"))
     let table = document.querySelector('tbody')
+  
 
     function addTask() {
         inputValue = input.value;
@@ -85,6 +85,17 @@
                 <td><button>Delete</button></td>
             </tr>
     `)
+    })
+    let storedData = JSON.parse(localStorage.getItem)("allTasks")
+    storedData.map((s)=> {
+        table.insertAdjacentHTML("beforeend",`
+    <tr>
+                <td>${s}</td>
+                <td><button>Complete</button></td>
+                <td><button>Delete</button></td>
+            </tr>
+    `)
+
     })
     console.log(table)
     
